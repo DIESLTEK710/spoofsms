@@ -16,7 +16,7 @@ class SpoofsController < ApplicationController
         format.html { redirect_to spoofs_path, notice: "Message Sent" }
         format.json { render :show, status: :created, location: @spoof }
       else
-        format.html { render :index }
+        format.html { redirect_to spoofs_path, notice: "Message Not Sent" }
         format.json { render json: @spoof.errors, status: :unprocessable_entity }
       end
     end
