@@ -1,7 +1,6 @@
 <h3>Spoof a SMS</h3>
 
-<li>List of recent spoofs</li>
-<li>Spoof form - must authenticate</li>
+<% if user_signed_in? %>
 <%= form_for(@spoof) do |f| %>
 <% if @spoof.errors.any? %>
 <ul>
@@ -12,6 +11,9 @@
 <% end %>
   <%= f.text_field :body %>
   <%= f.button 'Send', class: 'btn btn-small btn-warning' %>
+<% end %>
+<% else %>
+<%= link_to 'Login', new_user_session_path %>
 <% end %>
 
 <% @spoofs.each do |s| %>
