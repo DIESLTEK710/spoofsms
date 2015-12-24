@@ -1,0 +1,2 @@
+module SpoofsHelper
+end
