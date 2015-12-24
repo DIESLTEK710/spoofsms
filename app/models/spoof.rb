@@ -7,10 +7,12 @@
 #  body       :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  number     :string
 #
 
 class Spoof < ActiveRecord::Base
   belongs_to :user
   validates_length_of :body, :minimum => 5, :maximum => 160, :presence => true
+  validates :number, format: { with: /\d{3}-\d{3}-\d{4}/, message: "bad format or non US number" }
 
 end

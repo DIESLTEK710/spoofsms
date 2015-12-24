@@ -25,6 +25,6 @@ class SpoofsController < ApplicationController
 private
 
   def spoof_params
-    params.require(:spoof).permit(:body, :user_id)
+    params.require(:spoof).permit(:body, :user_id, :number)
   end
 end
