@@ -15,6 +15,10 @@ gem 'coffee-rails', '~> 4.1.0'
 # gem 'therubyracer', platforms: :ruby
 #authentication with devise
 gem 'devise'
+#style with bootstrap
+gem "therubyracer"
+gem "twitter-bootstrap-rails"
+
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
