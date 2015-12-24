@@ -13,10 +13,10 @@ class SpoofsController < ApplicationController
 
     respond_to do |format|
       if @spoof.save
-        format.html { redirect_to spoofs_path, notice: "Message Sent" }
+        format.html { redirect_to root_path, notice: "Message Sent" }
         format.json { render :show, status: :created, location: @spoof }
       else
-        format.html { redirect_to spoofs_path, notice: "Message Not Sent" }
+        format.html { redirect_to root_path, notice: "Message Not Sent" }
         format.json { render json: @spoof.errors, status: :unprocessable_entity }
       end
     end
