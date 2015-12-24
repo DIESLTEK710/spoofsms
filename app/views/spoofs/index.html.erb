@@ -10,12 +10,14 @@
 </ul>
 <% end %>
   <%= f.text_field :body %>
+    <%= f.hidden_field :user_id, :value => current_user.id %>
   <%= f.button 'Send', class: 'btn btn-small btn-warning' %>
+
 <% end %>
 <% else %>
-<%= link_to 'Login', new_user_session_path %>
+<%= link_to 'Login to Send a Message', new_user_session_path, class: 'btn btn-small btn-danger' %>
 <% end %>
 
 <% @spoofs.each do |s| %>
-  <li><%= s.body %></li>
+  <li><%= s.body %> | <%= s.user.username %></li>
 <% end %>
