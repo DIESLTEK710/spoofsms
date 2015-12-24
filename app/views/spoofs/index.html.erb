@@ -2,3 +2,18 @@
 
 <li>List of recent spoofs</li>
 <li>Spoof form - must authenticate</li>
+<%= form_for(@spoof) do |f| %>
+<% if @spoof.errors.any? %>
+<ul>
+<% @spoof.errors.full_messages.each do |msg| %>
+  <li><%= msg %></li>
+<% end %>
+</ul>
+<% end %>
+  <%= f.text_field :body %>
+  <%= f.button 'Send', class: 'btn btn-small btn-warning' %>
+<% end %>
+
+<% @spoofs.each do |s| %>
+  <li><%= s.body %></li>
+<% end %>
