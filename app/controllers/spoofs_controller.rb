@@ -1,10 +1,11 @@
 class SpoofsController < ApplicationController
   def index
-    @spoofs = Spoof.order("created_at DESC")
     if current_user
       @spoof = current_user.spoofs.new
+      @spoofs = current_user.spoofs.order("created_at DESC")
     else
       @spoof = Spoof.new
+      @spoofs = Spoof.order("created_at DESC")
     end
   end
 
@@ -13,7 +14,7 @@ class SpoofsController < ApplicationController
 
     respond_to do |format|
       if @spoof.save
-        current_user.increase_quotum!
+        current_user.quotum.increase_quotum!
         SmsJob.new.async.perform(@spoof.id)
         format.html { redirect_to root_path, notice: "Message Sent" }
         format.json { render :show, status: :created, location: @spoof }

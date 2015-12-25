@@ -11,4 +11,9 @@
 
 class Quotum < ActiveRecord::Base
   belongs_to :user
+
+  def increase_quotum!
+   self.sum += 1
+   self.save
+  end
 end
