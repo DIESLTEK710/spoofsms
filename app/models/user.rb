@@ -20,6 +20,8 @@
 
 class User < ActiveRecord::Base
   has_many :spoofs
+  has_many :quota
+  after_create :build_quota
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   validate :validate_username
@@ -38,5 +40,15 @@ class User < ActiveRecord::Base
     if User.where(email: username).exists?
       errors.add(:username, :invalid)
     end
+  end
+
+  def build_quota
+    Quotum.create(sum: 0, user_id: self.id)
+  end
+
+  def increase_quotum!
+   s = self.quota.last.sum += 1
+   s.save
+   s
   end
 end

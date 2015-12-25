@@ -1,0 +1,20 @@
+# == Schema Information
+#
+# Table name: quota
+#
+#  id         :integer          not null, primary key
+#  sum        :integer
+#  user_id    :integer
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  sum: 1
+  user_id: 1
+
+two:
+  sum: 1
+  user_id: 1
