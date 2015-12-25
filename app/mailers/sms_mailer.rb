@@ -1,0 +1,2 @@
+class SmsMailer < ApplicationMailer
+end
