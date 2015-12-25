@@ -4,19 +4,18 @@ class SmsJob
   def perform(spoof_id)
     ActiveRecord::Base.connection_pool.with_connection do
       spoof = Spoof.find(spoof_id)
-      #do something
       boot_twilio
       response = @lookup_client.phone_numbers.get(spoof.number)
       if response.country_code == "US"
-      sms = @client.messages.create(
-            from: Rails.application.secrets.twilio_numbers.sample,
-            to: spoof.number,
-            body: "#{spoof.body} http://youspoof.us")
+        sms = @client.messages.create(
+              from: Rails.application.secrets.twilio_numbers.sample,
+              to: spoof.number,
+              body: "#{spoof.body} http://youspoof.us")
+        sleep 10
+        spoof.status = sms.status
+        spoof.save
       end
-      #todo
-      #sleep 10
-      #spoof.status = sms.status
-      #spoof.save
+      #todo setup logging
       #todo generate a confirmation mailer to the user's email address
     end
   end

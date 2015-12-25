@@ -23,5 +23,5 @@
 <% end %>
 
 <% @spoofs.each do |s| %>
-  <li><%= s.body %> | <%= s.user.username %> to: <%= s.number %></li>
+  <li><%= s.body %> | <%= s.user.username %> to: <%= s.number %> status: <%= s.status %></li>
 <% end %>
