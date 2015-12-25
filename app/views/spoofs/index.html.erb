@@ -1,7 +1,7 @@
 <h3>Spoof a SMS</h3>
 <h4>You may send up to 3 messages a day to US numbers</h4>
 <% if user_signed_in? %>
-  <h5>Today's count is <%= current_user.spoofs.today.count %> message</h5>
+  <h5>Today's count is <%= pluralize(current_user.spoofs.today.count, 'message') %></h5>
 <% end %>
 
 <% if user_signed_in? %>
