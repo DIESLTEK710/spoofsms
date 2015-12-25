@@ -14,6 +14,7 @@ class SmsJob
         sleep 10
         spoof.status = sms.status
         spoof.save
+        SmsMailer.confirmation(spoof.id).deliver
       end
       #todo setup logging
       #todo generate a confirmation mailer to the user's email address

@@ -1,6 +1,9 @@
 <h3>Hi username,</h3>
 </br>
-<p>You just sent an anonymous spoofed text to spoof.number on
-  spoof.created_at.strftime(format).  Remember you are bound by our
+<p>You just sent an anonymous spoofed text to <%= @spoof.number %> on
+  <%= @spoof.created_at.strftime("%m/%d/%k") %>.  Remember you are bound by our
   terms of service.  In other words, don't fuck up.
 </p>
+</br>
+With love,</br>
+http://youspoof.us
