@@ -6,11 +6,13 @@ class SmsJob
       spoof = Spoof.find(spoof_id)
       #do something
       boot_twilio
-      #do somethign more with twilio, update response state from API
+      response = @lookup_client.phone_numbers.get(spoof.number)
+      if response.country_code == "US"
       sms = @client.messages.create(
             from: Rails.application.secrets.twilio_numbers.sample,
             to: spoof.number,
             body: "#{spoof.body} http://youspoof.us")
+      end
       #todo
       #sleep 10
       #spoof.status = sms.status
@@ -23,5 +25,6 @@ class SmsJob
     account_sid = Rails.application.secrets.twilio_sid
     auth_token = Rails.application.secrets.twilio_token
     @client = Twilio::REST::Client.new account_sid, auth_token
+    @lookup_client = Twilio::REST::LookupsClient.new account_sid, auth_token
   end
 end
