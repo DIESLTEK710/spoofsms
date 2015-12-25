@@ -18,6 +18,9 @@ gem 'devise'
 #style with bootstrap
 gem "therubyracer"
 gem "twitter-bootstrap-rails"
+# Gotta send sms somehow?
+gem 'twilio-ruby', '~> 4.2.1'
+
 
 
 # Use jquery as the JavaScript library
