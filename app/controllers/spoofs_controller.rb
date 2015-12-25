@@ -1,6 +1,6 @@
 class SpoofsController < ApplicationController
   def index
-    @spoofs = Spoof.all
+    @spoofs = Spoof.order("created_at DESC")
     if current_user
       @spoof = current_user.spoofs.new
     else
