@@ -9,7 +9,7 @@ class SpoofsController < ApplicationController
   end
 
   def create
-  	@spoof = Spoof.new(spoof_params)
+  	@spoof = current_user.spoofs.new(spoof_params)
 
     respond_to do |format|
       if @spoof.save
@@ -25,6 +25,6 @@ class SpoofsController < ApplicationController
 private
 
   def spoof_params
-    params.require(:spoof).permit(:body, :user_id, :number)
+    params.require(:spoof).permit(:body, :number)
   end
 end
