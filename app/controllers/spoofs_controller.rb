@@ -13,7 +13,8 @@ class SpoofsController < ApplicationController
   	@spoof = current_user.spoofs.new(spoof_params)
 
     respond_to do |format|
-      if @spoof.save
+      if current_user.quotum.sum < 3
+        @spoof.save
         current_user.quotum.increase_quotum!
         SmsJob.new.async.perform(@spoof.id)
         format.html { redirect_to root_path, notice: "Message Sent" }
