@@ -10,7 +10,7 @@ class SmsJob
       sms = @client.messages.create(
             from: Rails.application.secrets.twilio_numbers.sample,
             to: spoof.number,
-            body: spoof.body)
+            body: "#{spoof.body} http://youspoof.us")
       #todo
       #sleep 10
       #spoof.status = sms.status

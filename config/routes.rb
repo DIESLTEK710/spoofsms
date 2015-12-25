@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  get 'pages/terms_of_service'
+
+  get 'pages/acceptable_use_policy'
+
+  get 'pages/privacy_policy'
+
   devise_for :users
   resources :spoofs
   root 'spoofs#index'
