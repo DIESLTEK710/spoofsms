@@ -20,6 +20,8 @@ gem "therubyracer"
 gem "twitter-bootstrap-rails"
 # Gotta send sms somehow?
 gem 'twilio-ruby', '~> 4.2.1'
+# pagination
+gem 'will_paginate'
 
 
 

@@ -16,12 +16,44 @@
   <%= f.text_field :number, placeholder: '281-444-2323' %>
   <%= f.text_field :body, placeholder: '160 chars or less' %>
   <%= f.button 'Send', class: 'btn btn-small btn-warning' %>
-
 <% end %>
 <% else %>
-<%= link_to 'Login to Send a Message', new_user_session_path, class: 'btn btn-small btn-danger' %>
+  <%= link_to 'Login to Send a Message', new_user_session_path, class: 'btn btn-small btn-danger' %>
 <% end %>
 
-<% @spoofs.each do |s| %>
-  <li><%= s.body %> | <%= s.user.username %> to: <%= s.number %> status: <%= s.status %></li>
-<% end %>
+<div class="container" style="margin-top: 35px">
+  <div class="page-header page-heading">
+    <h1 class="pull-left">Recent Spoofs</h1>
+    <div class="clearfix"></div>
+  </div>
+  <p class="lead">See the wonderful antics of all our users.  Note: may be not safe for work. <3</p>
+    <table class="table forum table-striped">
+    <thead>
+      <tr>
+        <th class="cell-stat"></th>
+        <th>
+          <h3>Spoofs</h3>
+        </th>
+        <th class="cell-stat text-center hidden-xs hidden-sm">Status</th>
+        <th class="cell-stat text-center hidden-xs hidden-sm">Sent to</th>
+        <th class="cell-stat-2x hidden-xs hidden-sm">Sent on</th>
+      </tr>
+    </thead>
+
+    <tbody>
+  <% @spoofs.each do |s| %>
+      <tr>
+        <td class="text-center"><i class="fa fa-question fa-2x text-primary"></i></td>
+        <td>
+          <h4><%= s.body.upcase %></h4>
+        </td>
+        <td class="text-center hidden-xs hidden-sm"><%= s.status %></td>
+        <td class="text-center hidden-xs hidden-sm"><%= s.number %></td>
+        <td class="hidden-xs hidden-sm">by <%= s.user.username.titleize %><br><small><i class="fa fa-clock-o"></i> <%= time_ago_in_words(s.created_at) %></small></td>
+      </tr>
+    </tbody>
+    <% end %>
+  </table>
+</div>
+</div>
+<%= will_paginate @posts %>
