@@ -22,6 +22,8 @@ gem "twitter-bootstrap-rails"
 gem 'twilio-ruby', '~> 4.2.1'
 # pagination
 gem 'will_paginate'
+# pagination with bootstrap
+gem 'will_paginate-bootstrap'
 
 
 
