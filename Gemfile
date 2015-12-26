@@ -37,6 +37,8 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 # Background twilio with sucker_punch, too lazy to do sidekiq
 gem 'sucker_punch', '~> 1.0'
+# Simple admin interface
+gem 'rails_admin'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
