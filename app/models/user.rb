@@ -16,6 +16,9 @@
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #  username               :string
+#  role                   :string           default("user")
+#  first_name             :string
+#  last_name              :string
 #
 
 class User < ActiveRecord::Base
@@ -26,6 +29,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   validate :validate_username
+  validates :first_name, :last_name, :presence => true
   attr_accessor :login
 
   def self.find_for_database_authentication(warden_conditions)
@@ -45,5 +49,9 @@ class User < ActiveRecord::Base
 
   def build_quotum
     Quotum.create(sum: 0, user_id: self.id)
+  end
+
+  def full_name
+    "#{first_name} #{last_name}"
   end
 end
