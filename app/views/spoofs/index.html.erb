@@ -1,5 +1,6 @@
 <h3>Spoof a SMS</h3>
-<h4>You may send up to 3 messages a day to US numbers</h4>
+<h4>You may send up to 3 messages in a quota period to US numbers only.</h4>
+<small>Quota is reset every 72 hours while in beta</small>
 <% if user_signed_in? %>
   <h5>Your quota is: <%= pluralize(current_user.quotum.sum, 'message') %></h5>
 <% end %>
