@@ -15,6 +15,12 @@ class SpoofsController < ApplicationController
         SmsJob.new.async.perform(@spoof.id)
         format.html { redirect_to root_path, notice: "Message Sent" }
         format.json { render :show, status: :created, location: @spoof }
+      elsif admin? && current_user.quotum.sum < 13
+        @spoof.save
+        current_user.quotum.increase_quotum!
+        SmsJob.new.async.perform(@spoof.id)
+        format.html { redirect_to root_path, notice: "Message Sent" }
+        format.json { render :show, status: :created, location: @spoof }
       else
         format.html { redirect_to root_path, notice: "Message Not Sent" }
         format.json { render json: @spoof.errors, status: :unprocessable_entity }
