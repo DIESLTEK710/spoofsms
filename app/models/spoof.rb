@@ -18,18 +18,6 @@ class Spoof < ActiveRecord::Base
   before_create :generate_message_id
 
   def generate_message_id
-    year = Time.now.year.to_s[2..-1]
-   if Spoof.count == 0
-    self.message_id = "#{year}-00000001"
-   else
-    last = Spoof.last.message_id
-   end
-   if(!last || last.split('-')[0] != year)
-    self.message_id = "#{year}-00000001"
-   else
-    number = last.split('-')[1].to_i
-    number += 1
-    self.message_id = year + '-' + "%08d" % number
-  end
+    self.message_id = SecureRandom.hex(7)
   end
 end
