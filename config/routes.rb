@@ -6,7 +6,11 @@ Rails.application.routes.draw do
   get 'pages/privacy_policy'
 
   devise_for :users
-  resources :spoofs
+  resources :spoofs do
+    member do
+      post 'resend_spoof'
+    end
+  end
   root 'spoofs#index'
 
   # The priority is based upon order of creation: first created -> highest priority.

@@ -26,6 +26,22 @@ class SpoofsController < ApplicationController
     end
   end
 
+  def resend_spoof
+    orig_spoof = Spoof.find(params[:id])
+    new_spoof = Spoof.new(
+      user_id: orig_spoof.user_id,
+      body: orig_spoof.body,
+      number: orig_spoof.number)
+    if current_user.quotum.sum < 3
+      new_spoof.save
+      current_user.quotum.increase_quotum!
+      SmsJob.new.async.perform(new_spoof.id)
+      redirect_to root_path, notice: "Message Sent"
+    else
+      redirect_to root_path, notice: "Message Not Sent"
+    end
+  end
+
 private
 
   def spoof_params
