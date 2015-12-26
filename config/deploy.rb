@@ -3,7 +3,6 @@ lock '3.1.0'
 set :application, 'spoofsms'
 set :repo_url, 'git@github.com:shakycode/spoofsms.git'
 
-
 set :deploy_to, '/home/deploy/spoofsms'
 
 set :linked_files, %w{config/database.yml config/secrets.yml}
