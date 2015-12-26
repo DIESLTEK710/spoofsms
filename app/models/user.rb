@@ -21,6 +21,7 @@
 class User < ActiveRecord::Base
   has_many :spoofs
   has_one :quotum
+  has_many :comments
   after_create :build_quotum
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable

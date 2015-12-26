@@ -8,6 +8,8 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  number     :string
+#  status     :string
+#  message_id :string
 #
 
 class Spoof < ActiveRecord::Base

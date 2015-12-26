@@ -1,20 +1,18 @@
 # == Schema Information
 #
-# Table name: spoofs
+# Table name: comments
 #
 #  id         :integer          not null, primary key
+#  body       :text
 #  user_id    :integer
-#  body       :string
+#  post_id    :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  number     :string
-#  status     :string
-#  message_id :string
 #
 
 require 'test_helper'
 
-class SpoofTest < ActiveSupport::TestCase
+class CommentTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end
