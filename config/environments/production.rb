@@ -95,6 +95,7 @@ config.action_mailer.smtp_settings = {
   :port                 => 25,
   :openssl_verify_mode => 'none'
 }
+config.action_mailer.default_url_options = { :host => 'https://youspoof.us' }
 
   # Rails.application.config.middleware.use ExceptionNotification::Rack,
   # :email => {
