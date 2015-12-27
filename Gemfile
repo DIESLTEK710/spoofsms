@@ -41,6 +41,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'sucker_punch', '1.5.1'
 # Simple admin interface
 gem 'rails_admin'
+# Raise rack exceptions and email them
+gem 'exception_notification'
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

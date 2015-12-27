@@ -88,6 +88,13 @@ ActionMailer::Base.smtp_settings = {
      :openssl_verify_mode => 'none'
   }
 
+  Rails.application.config.middleware.use ExceptionNotification::Rack,
+  :email => {
+    :email_prefix => "[PREFIX] ",
+    :sender_address => %{"notifier" <no-reply@youspoof.us>},
+    :exception_recipients => %w{youspoofus@gmail.com}
+  }
+
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
 
