@@ -38,7 +38,7 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 # Background twilio with sucker_punch, too lazy to do sidekiq
-gem 'sucker_punch', '~> 1.0'
+gem 'sucker_punch', '1.5.1'
 # Simple admin interface
 gem 'rails_admin'
 
