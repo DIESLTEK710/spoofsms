@@ -1,5 +1,5 @@
 class SmsMailer < ApplicationMailer
-  default :from => Rails.application.secrets.gmail_email
+  default :from => "no-reply@youspoof.us"
 
   def confirmation(spoof_id)
       @spoof = Spoof.find(spoof_id)
