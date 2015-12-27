@@ -9,14 +9,12 @@ class SpoofsController < ApplicationController
   	@spoof = current_user.spoofs.new(spoof_params)
 
     respond_to do |format|
-      if current_user.quotum.sum < 3
-        @spoof.save
+      if @spoof.save && current_user.quotum.sum < 3
         current_user.quotum.increase_quotum!
         SmsJob.new.async.perform(@spoof.id)
         format.html { redirect_to root_path, notice: "Message Sent" }
         format.json { render :show, status: :created, location: @spoof }
-      elsif admin? && current_user.quotum.sum < 13
-        @spoof.save
+      elsif @spoof.save && admin? && current_user.quotum.sum < 100
         current_user.quotum.increase_quotum!
         SmsJob.new.async.perform(@spoof.id)
         format.html { redirect_to root_path, notice: "Message Sent" }
