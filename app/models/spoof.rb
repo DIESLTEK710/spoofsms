@@ -21,6 +21,6 @@ class Spoof < ActiveRecord::Base
   before_create :generate_message_id
 
   def generate_message_id
-    self.message_id = SecureRandom.hex(7)
+    self.message_id = SecureRandom.hex(7)[0..9]
   end
 end
