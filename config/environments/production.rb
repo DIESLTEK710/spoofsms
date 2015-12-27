@@ -62,7 +62,8 @@ Rails.application.configure do
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
-  # config.action_mailer.raise_delivery_errors = false
+   config.action_mailer.raise_delivery_errors = true
+   config.action_mailer.perform_deliveries = true
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).
@@ -82,18 +83,25 @@ Rails.application.configure do
 #     :enable_starttls_auto => true
 # }
 
-ActionMailer::Base.smtp_settings = {
-     :address              => "localhost",
-     :port                 => 25,
-     :openssl_verify_mode => 'none'
-  }
+# ActionMailer::Base.smtp_settings = {
+#      :address              => "localhost",
+#      :port                 => 25,
+#      :openssl_verify_mode => 'none'
+#   }
 
-  # Rails.application.config.middleware.use ExceptionNotification::Rack,
-  # :email => {
-  #   :email_prefix => "[PREFIX] ",
-  #   :sender_address => %{"notifier" <no-reply@youspoof.us>},
-  #   :exception_recipients => %w{youspoofus@gmail.com}
-  # }
+config.action_mailer.delivery_method = :smtp
+config.action_mailer.smtp_settings = {
+  :address              => "localhost",
+  :port                 => 25,
+  :openssl_verify_mode => 'none'
+}
+
+  Rails.application.config.middleware.use ExceptionNotification::Rack,
+  :email => {
+    :email_prefix => "[PREFIX] ",
+    :sender_address => %{"notifier" <no-reply@youspoof.us>},
+    :exception_recipients => %w{youspoofus@gmail.com}
+  }
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
