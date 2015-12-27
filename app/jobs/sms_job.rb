@@ -3,8 +3,8 @@ class SmsJob
 
   def perform(spoof_id)
     ActiveRecord::Base.connection_pool.with_connection do
-      log_dir = '/home/deploy/spoofsms/shared/log'
-      log = Logger.new("#{log_dir}/sms-job-#{Time.now.strftime("%m-%d-%Y")}.log")
+      # log_dir = '/home/deploy/spoofsms/shared/log'
+      # log = Logger.new("#{log_dir}/sms-job-#{Time.now.strftime("%m-%d-%Y")}.log")
       spoof = Spoof.find(spoof_id)
       boot_twilio
       response = @lookup_client.phone_numbers.get(spoof.number)
@@ -14,7 +14,7 @@ class SmsJob
               to: spoof.number,
               body: "#{spoof.body} http://youspoof.us")
         SmsMailer.confirmation(spoof.id).deliver
-        log.info "Successfully sent spoof for user_id: #{spoof.user.id} spoof_id #{spoof.id} message_id #{spoof.message_id}"
+        # log.info "Successfully sent spoof for user_id: #{spoof.user.id} spoof_id #{spoof.id} message_id #{spoof.message_id}"
       end
     end
   end
