@@ -11,9 +11,6 @@ class SmsJob
               from: Rails.application.secrets.twilio_numbers.sample,
               to: spoof.number,
               body: "#{spoof.body} http://youspoof.us")
-        sleep 10
-        spoof.status = sms.status
-        spoof.save
         SmsMailer.confirmation(spoof.id).deliver
       end
       #todo setup logging
