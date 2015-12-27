@@ -37,6 +37,11 @@ class SpoofsController < ApplicationController
       current_user.quotum.increase_quotum!
       SmsJob.new.async.perform(new_spoof.id)
       redirect_to root_path, notice: "Message Sent"
+    elsif admin? && current_user.quotum.sum < 100
+      new_spoof.save
+      current_user.quotum.increase_quotum!
+      SmsJob.new.async.perform(new_spoof.id)
+      redirect_to root_path, notice: "Message Sent"
     else
       redirect_to root_path, notice: "Message Not Sent"
     end
