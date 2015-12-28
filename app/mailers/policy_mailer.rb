@@ -10,4 +10,9 @@ class PolicyMailer < ApplicationMailer
       @user = User.find(user_id)
       mail to: [@user.email], subject: "Update to our Terms of Service"
   end
+
+  def privacy_policy(user_id)
+      @user = User.find(user_id)
+      mail to: [@user.email], subject: "Update to our Privacy Policy"
+  end
 end

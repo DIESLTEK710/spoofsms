@@ -16,5 +16,8 @@ namespace :policy do
 
   desc "Send Updated Privacy Policy"
   task priv: :environment do
+    User.all.each do |u|
+      PolicyMailer.privacy_policy(u.id).deliver
+    end
   end
 end
