@@ -1,5 +1,5 @@
 class QuotaMailer < ApplicationMailer
-  default :from => Rails.application.secrets.gmail_email
+  default :from => "no-reply@youspoof.us"
 
   def quota_reset(quotum_id)
       @quotum = Quotum.find(quotum_id)
