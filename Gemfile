@@ -41,8 +41,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'sucker_punch', '1.5.1'
 # Simple admin interface
 gem 'rails_admin'
-# Raise rack exceptions and email them, will test later
-#gem 'exception_notification'
+#Searching is good
+gem 'ransack'
 
 
 group :development, :test do

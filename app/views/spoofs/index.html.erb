@@ -24,17 +24,20 @@
 
 <div class="container" style="margin-top: 35px">
   <div class="page-header page-heading">
-    <h1 class="pull-left">Recent Spoofs</h1>
+    <div class="pull-left">
+<%= search_form_for @q do |f| %>
+  <%= f.search_field :body_or_number_cont, placeholder: 'Search body or number', class: 'input-xl' %>
+  <%= f.submit class: 'btn btn-small btn-primary' %>
+<% end %>
+</div>
     <div class="clearfix"></div>
   </div>
-  <p class="lead"><%= random_quote %></p>
+
     <table class="table forum table-striped">
     <thead>
       <tr>
         <th class="cell-stat"></th>
-        <th>
-          <h3>Spoofs</h3>
-        </th>
+        <th class="cell-stat text-center hidden-xs hidden-sm">Message</th>
         <th class="cell-stat text-center hidden-xs hidden-sm">Message ID</th>
         <th class="cell-stat text-center hidden-xs hidden-sm">Sent to</th>
         <th class="cell-stat-2x hidden-xs hidden-sm">Sent on</th>

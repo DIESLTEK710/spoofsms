@@ -2,7 +2,9 @@ class SpoofsController < ApplicationController
   before_action :authenticate_user!
   def index
     @spoof = current_user.spoofs.new
-    @spoofs = current_user.spoofs.order("created_at DESC").paginate(:page => params[:page], :per_page => 5)
+    @q = current_user.spoofs.ransack(params[:q])
+    @spoofs = @q.result(distinct: true).paginate(:page => params[:page], :per_page => 5).order("created_at DESC")
+    #@spoofs = current_user.spoofs.order("created_at DESC").paginate(:page => params[:page], :per_page => 5)
   end
 
   def create
