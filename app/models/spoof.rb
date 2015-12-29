@@ -14,7 +14,7 @@
 
 class Spoof < ActiveRecord::Base
   belongs_to :user
-  validates_length_of :body, :minimum => 5, :maximum => 160, :presence => true
+  validates_length_of :body, :minimum => 5, :maximum => 140, :presence => true
   validates :number, format: { with: /\d{3}-\d{3}-\d{4}/, message: "should be a US number and formatted xxx-xxx-xxxx" }
   validates :body, :presence => true
   scope :today, -> { where("created_at BETWEEN ? AND ?", Time.zone.now.beginning_of_day, Time.zone.now.end_of_day) }
