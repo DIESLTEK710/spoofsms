@@ -51,7 +51,7 @@
         <td>
           <h4><%= s.body.upcase %></h4>
         </td>
-        <td class="text-center hidden-xs hidden-sm"><%= s.message_id %> <%= s.ip_addr %> <%= link_to 'Resend', resend_spoof_spoof_path(s.id), :method => 'post', class: 'btn btn-small btn-info' %></td>
+        <td class="text-center hidden-xs hidden-sm"><%= s.message_id %> <%= link_to 'Resend', resend_spoof_spoof_path(s.id), :method => 'post', class: 'btn btn-small btn-info' %></td>
         <td class="text-center hidden-xs hidden-sm"><%= s.number %></td>
         <td class="hidden-xs hidden-sm">by <%= s.user.username.titleize %><br><small><i class="fa fa-clock-o"></i> <%= time_ago_in_words(s.created_at) %></small></td>
       </tr>
