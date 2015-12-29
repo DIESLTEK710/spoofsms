@@ -9,6 +9,7 @@ class SpoofsController < ApplicationController
 
   def create
   	@spoof = current_user.spoofs.new(spoof_params)
+    @spoof.ip_addr = request.remote_ip
 
     respond_to do |format|
       if @spoof.save && user? && current_user.quotum.sum < 3
@@ -33,6 +34,7 @@ class SpoofsController < ApplicationController
     new_spoof = Spoof.new(
       user_id: orig_spoof.user_id,
       body: orig_spoof.body,
+      ip_addr: request.remote_ip,
       number: orig_spoof.number)
     if user? && current_user.quotum.sum < 3
       new_spoof.save
@@ -52,6 +54,6 @@ class SpoofsController < ApplicationController
 private
 
   def spoof_params
-    params.require(:spoof).permit(:body, :number)
+    params.require(:spoof).permit(:body, :number, :ip_addr)
   end
 end
