@@ -6,7 +6,7 @@ set :rbenv_type, :user
 set :rbenv_ruby, '2.2.3'
 set :rbenv_path, '/home/deploy/.rbenv/'
 set :deploy_to, '/home/deploy/spoofsms'
-
+set :whenever_identifier, ->{ "#{fetch(:application)}_#{fetch(:stage)}" }
 set :linked_files, %w{config/database.yml config/secrets.yml}
 set :linked_dirs, %w{log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
 set :keep_releases, 3
