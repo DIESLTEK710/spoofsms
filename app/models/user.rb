@@ -30,6 +30,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
   validate :validate_username
   validates :first_name, :last_name, :presence => true
+  scope :unconfirmed, -> {where confirmed_at: nil}
   attr_accessor :login
 
   def self.find_for_database_authentication(warden_conditions)

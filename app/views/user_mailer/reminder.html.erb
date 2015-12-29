@@ -1,0 +1,8 @@
+<h3>Hi <%= @user.username %>,</h3>
+</br>
+<p>It looks like you signed up on <%= @user.created_at.strftime("%m/%d/%Y") %> but haven't confirmed your email address or logged in yet.
+  Sometimes we get busy and forget or maybe even worse, your email provider tagged us as spam!  Wooops!
+</p>
+</br>
+With love,</br>
+<%= link_to 'https://youspoof.us', root_url %>
