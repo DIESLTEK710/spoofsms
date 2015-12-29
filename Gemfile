@@ -24,6 +24,7 @@ gem 'twilio-ruby', '~> 4.2.1'
 gem 'will_paginate'
 # pagination with bootstrap
 gem 'will_paginate-bootstrap'
+gem 'whenever', :require => false
 
 
 
