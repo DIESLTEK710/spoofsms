@@ -1,0 +1,8 @@
+<h3>Hi <%= @user.username %>,</h3>
+</br>
+<p>We haven't seen you since <%= @user.last_sign_in_at.strftime("%m/%d/%Y") %> and we miss you!
+  Keep sending Spoof sms with us by logging into your account and joining in the fun!
+</p>
+</br>
+With love,</br>
+<%= link_to 'https://youspoof.us', root_url %>

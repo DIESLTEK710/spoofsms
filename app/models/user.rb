@@ -31,6 +31,7 @@ class User < ActiveRecord::Base
   validate :validate_username
   validates :first_name, :last_name, :presence => true
   scope :unconfirmed, -> {where confirmed_at: nil}
+  scope :lapse_in_login, -> {where("last_sign_in_at < ?", 3.days.ago) }
   attr_accessor :login
 
   def self.find_for_database_authentication(warden_conditions)
