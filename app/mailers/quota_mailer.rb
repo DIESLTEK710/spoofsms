@@ -3,6 +3,6 @@ class QuotaMailer < ApplicationMailer
 
   def quota_reset(quotum_id)
       @quotum = Quotum.find(quotum_id)
-      mail to: [@quotum.user.email], subject: "Your spoof quota has been reset!"
+      mail to: [@quotum.try(:user).try(:email)], subject: "Your spoof quota has been reset!"
   end
 end
