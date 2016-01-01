@@ -10,6 +10,7 @@
 #  number     :string
 #  status     :string
 #  message_id :string
+#  ip_addr    :string
 #
 
 class Spoof < ActiveRecord::Base

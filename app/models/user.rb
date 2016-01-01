@@ -19,6 +19,9 @@
 #  role                   :string           default("user")
 #  first_name             :string
 #  last_name              :string
+#  confirmation_token     :string
+#  confirmed_at           :datetime
+#  confirmation_sent_at   :datetime
 #
 
 class User < ActiveRecord::Base
