@@ -27,7 +27,7 @@ class User < ActiveRecord::Base
   has_many :comments
   after_create :build_quotum
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable, :confirmable
+         :recoverable, :rememberable, :trackable, :validatable, :confirmable, :timeoutable
   validate :validate_username
   validates :first_name, :last_name, :presence => true
   scope :unconfirmed, -> {where confirmed_at: nil}
