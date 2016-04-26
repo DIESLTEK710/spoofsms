@@ -12,7 +12,7 @@ class SmsJob
         sms = @client.messages.create(
               from: Rails.application.secrets.twilio_numbers.sample,
               to: spoof.number,
-              body: "#{spoof.body} http://youspoof.us")
+              body: "#{spoof.body} https://youspoof.us")
         SmsMailer.confirmation(spoof.id).deliver
         # log.info "Successfully sent spoof for user_id: #{spoof.user.id} spoof_id #{spoof.id} message_id #{spoof.message_id}"
       end
